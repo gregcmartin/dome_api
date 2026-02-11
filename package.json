@@ -1,0 +1,49 @@
+{
+  "name": "dome-cli",
+  "version": "0.1.0",
+  "description": "TypeScript CLI and API client for the Dome API (Polymarket, Kalshi, matching markets, crypto prices, websockets, order router).",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "dome": "./dist/cli.js"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "dev": "tsx src/cli.ts",
+    "lint": "eslint .",
+    "format": "prettier -w .",
+    "test": "vitest run --exclude 'src/live/**'",
+    "test:live": "RUN_LIVE_TESTS=1 vitest run src/live/live.test.ts",
+    "test:live:ws": "RUN_LIVE_TESTS=1 RUN_LIVE_WS_TESTS=1 vitest run src/live/live.test.ts",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  },
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "commander": "^14.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.34.0",
+    "@types/node": "^24.1.0",
+    "eslint": "^9.34.0",
+    "globals": "^16.4.0",
+    "prettier": "^3.6.2",
+    "tsx": "^4.20.3",
+    "typescript": "^5.9.2",
+    "typescript-eslint": "^8.41.0",
+    "vitest": "^3.2.4"
+  }
+}
